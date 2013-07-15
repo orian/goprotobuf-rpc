@@ -6,12 +6,12 @@ package protorpc
 
 import (
 	"bufio"
-	"encoding/protobuf/proto"
+	"code.google.com/p/goprotobuf/proto"
 	"fmt"
+	"github.com/orian/goprotobuf-rpc/protorpc/wire.pb"
 	"io"
 	"net"
 	"net/rpc"
-	"net/rpc/protorpc/wire.pb"
 	"sync"
 )
 

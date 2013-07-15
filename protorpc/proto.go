@@ -5,8 +5,8 @@
 package protorpc
 
 import (
+	"code.google.com/p/goprotobuf/proto"
 	"encoding/binary"
-	"encoding/protobuf/proto"
 	"io"
 )
 

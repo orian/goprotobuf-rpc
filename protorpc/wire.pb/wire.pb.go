@@ -4,7 +4,7 @@
 
 package wire
 
-import proto "encoding/protobuf/proto"
+import proto "code.google.com/p/goprotobuf/proto"
 import json "encoding/json"
 import math "math"
 

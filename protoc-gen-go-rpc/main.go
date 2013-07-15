@@ -45,7 +45,7 @@ import (
 
 	"code.google.com/p/goprotobuf/proto"
 	"code.google.com/p/goprotobuf/protoc-gen-go/generator"
-    _ "github.com/orian/goprotobuf-rpc/protoc-gen-go-rpc/generator"
+	_ "github.com/orian/goprotobuf-rpc/protoc-gen-go-rpc/generator"
 )
 
 func main() {
