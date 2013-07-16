@@ -32,7 +32,7 @@ func (p *servicePlugin) GenerateImports(file *stdgen.FileDescriptor) {
 		p.P(`import "io"`)
 		p.P(`import "net"`)
 		p.P(`import "net/rpc"`)
-		p.P(`import "code.google.com/p/goprotobuf/protorpc"`)
+		p.P(`import "github.com/orian/goprotobuf-rpc/protorpc"`)
 	}
 }
 
