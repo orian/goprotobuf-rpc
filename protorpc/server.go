@@ -44,7 +44,7 @@ func NewServerCodec(conn io.ReadWriteCloser) rpc.ServerCodec {
 func (c *serverCodec) ReadRequestHeader(r *rpc.Request) error {
 	var header wire.Header
 
-	if err := readProto(c.r, &header); err != nil {
+	if err := ReadProto(c.r, &header); err != nil {
 		return err
 	}
 	if header.Method == nil {
@@ -70,7 +70,7 @@ func (c *serverCodec) ReadRequestBody(x interface{}) error {
 	if !ok {
 		return fmt.Errorf("ServerCodec.ReadRequestBody: %T does not implement proto.Message", x)
 	}
-	return readProto(c.r, pb)
+	return ReadProto(c.r, pb)
 }
 
 // A value sent as a placeholder for the server's response value when the server
@@ -108,10 +108,10 @@ func (c *serverCodec) WriteResponse(r *rpc.Response, x interface{}) error {
 	}
 
 	// Write the Header and Result
-	if err := writeProto(c.w, &header); err != nil {
+	if err := WriteProto(c.w, &header); err != nil {
 		return err
 	}
-	return writeProto(c.w, pb)
+	return WriteProto(c.w, pb)
 }
 
 func (s *serverCodec) Close() error {
