@@ -56,15 +56,15 @@ func (c *clientCodec) WriteRequest(r *rpc.Request, param interface{}) error {
 	header.Id = proto.Uint64(r.Seq)
 
 	// Write the Header and Param
-	if err := writeProto(c.w, &header); err != nil {
+	if err := WriteProto(c.w, &header); err != nil {
 		return err
 	}
-	return writeProto(c.w, pb)
+	return WriteProto(c.w, pb)
 }
 
 func (c *clientCodec) ReadResponseHeader(r *rpc.Response) error {
 	var header wire.Header
-	if err := readProto(c.r, &header); err != nil {
+	if err := ReadProto(c.r, &header); err != nil {
 		return err
 	}
 
@@ -89,7 +89,7 @@ func (c *clientCodec) ReadResponseBody(x interface{}) error {
 	if !ok {
 		return fmt.Errorf("ClientCodec.ReadResponseBody: %T does not implement proto.Message", x)
 	}
-	return readProto(c.r, pb)
+	return ReadProto(c.r, pb)
 }
 
 // Close closes the underlying connection.

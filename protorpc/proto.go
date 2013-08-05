@@ -10,14 +10,14 @@ import (
 	"io"
 )
 
-type protoReader interface {
+type ProtoReader interface {
 	io.ByteReader
 	io.Reader
 }
 
-// readProto reads a uvarint size and then a protobuf from r.
+// ReadProto reads a uvarint size and then a protobuf from r.
 // If the size read is zero, nothing more is read.
-func readProto(r protoReader, pb proto.Message) error {
+func ReadProto(r ProtoReader, pb proto.Message) error {
 	size, err := binary.ReadUvarint(r)
 	if err != nil {
 		return err
@@ -34,10 +34,10 @@ func readProto(r protoReader, pb proto.Message) error {
 	return nil
 }
 
-// writeProto writes a uvarint size and then a protobuf to w.
+// WriteProto writes a uvarint size and then a protobuf to w.
 // If the data takes no space (like rpc.InvalidRequest),
 // only a zero size is written.
-func writeProto(w io.Writer, pb proto.Message) error {
+func WriteProto(w io.Writer, pb proto.Message) error {
 	// Allocate enough space for the biggest uvarint
 	var size [binary.MaxVarintLen64]byte
 
